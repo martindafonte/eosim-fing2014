@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BBA65B36-C6A1-42AB-A6BE-CF034EF1DC38}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>lib\</OutDir>
+    <IntDir>Debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>lib\</OutDir>
+    <IntDir>Release\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\include;..\libs\boost_1_33_1;..\libs\SDL_image-1.2.5\include;..\libs\SDL-1.2.11\include;..\libs\agg23\include;..\libs\agg23\font_freetype;..\libs\freetype-2.1.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)eosim1.1_d.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <AdditionalIncludeDirectories>.\include;..\libs\boost_1_33_1;..\libs\SDL_image-1.2.5\include;..\libs\SDL-1.2.11\include;..\libs\agg23\include;..\libs\agg23\font_freetype;..\libs\freetype-2.1.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)eosim1.1_r.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\eosim\core.hpp" />
+    <ClInclude Include="include\eosim\dist.hpp" />
+    <ClInclude Include="include\eosim\graphic.hpp" />
+    <ClInclude Include="include\eosim\statics.hpp" />
+    <ClInclude Include="include\eosim\utils.hpp" />
+    <ClInclude Include="include\eosim\core\bcalendar.hpp" />
+    <ClInclude Include="include\eosim\core\bevent.hpp" />
+    <ClInclude Include="include\eosim\core\bin.hpp" />
+    <ClInclude Include="include\eosim\core\ccalendar.hpp" />
+    <ClInclude Include="include\eosim\core\cevent.hpp" />
+    <ClInclude Include="include\eosim\core\entity.hpp" />
+    <ClInclude Include="include\eosim\core\experiment.hpp" />
+    <ClInclude Include="include\eosim\core\model.hpp" />
+    <ClInclude Include="include\eosim\core\nonrenewable.hpp" />
+    <ClInclude Include="include\eosim\core\renewable.hpp" />
+    <ClInclude Include="include\eosim\statics\histogram.hpp" />
+    <ClInclude Include="include\eosim\statics\observation.hpp" />
+    <ClInclude Include="include\eosim\statics\timeseries.hpp" />
+    <ClInclude Include="include\eosim\statics\timeweighted.hpp" />
+    <ClInclude Include="include\eosim\utils\beventmap.hpp" />
+    <ClInclude Include="include\eosim\utils\ceventvector.hpp" />
+    <ClInclude Include="include\eosim\utils\distvector.hpp" />
+    <ClInclude Include="include\eosim\utils\entityqueue.hpp" />
+    <ClInclude Include="include\eosim\utils\entityqueuefifo.hpp" />
+    <ClInclude Include="include\eosim\utils\entityqueuelifo.hpp" />
+    <ClInclude Include="include\eosim\utils\entityqueueordered.hpp" />
+    <ClInclude Include="include\eosim\graphic\display.hpp" />
+    <ClInclude Include="include\eosim\graphic\refreshgraphic.hpp" />
+    <ClInclude Include="include\eosim\dist\distmanager.hpp" />
+    <ClInclude Include="include\eosim\dist\distribution.hpp" />
+    <ClInclude Include="include\eosim\dist\lognormaldist.hpp" />
+    <ClInclude Include="include\eosim\dist\mt19937.hpp" />
+    <ClInclude Include="include\eosim\dist\negexpdist.hpp" />
+    <ClInclude Include="include\eosim\dist\normaldist.hpp" />
+    <ClInclude Include="include\eosim\dist\numbergenerator.hpp" />
+    <ClInclude Include="include\eosim\dist\numbergeneratorfactory.hpp" />
+    <ClInclude Include="include\eosim\dist\poissondist.hpp" />
+    <ClInclude Include="include\eosim\dist\uniformdist.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\eosim\core\bcalendar.cpp" />
+    <ClCompile Include="src\eosim\core\bevent.cpp" />
+    <ClCompile Include="src\eosim\core\bin.cpp" />
+    <ClCompile Include="src\eosim\core\ccalendar.cpp" />
+    <ClCompile Include="src\eosim\core\cevent.cpp" />
+    <ClCompile Include="src\eosim\core\entity.cpp" />
+    <ClCompile Include="src\eosim\core\experiment.cpp" />
+    <ClCompile Include="src\eosim\core\model.cpp" />
+    <ClCompile Include="src\eosim\core\nonrenewable.cpp" />
+    <ClCompile Include="src\eosim\core\renewable.cpp" />
+    <ClCompile Include="src\eosim\dist\distmanager.cpp" />
+    <ClCompile Include="src\eosim\dist\distribution.cpp" />
+    <ClCompile Include="src\eosim\dist\lognormaldist.cpp" />
+    <ClCompile Include="src\eosim\dist\mt19937.cpp" />
+    <ClCompile Include="src\eosim\dist\negexpdist.cpp" />
+    <ClCompile Include="src\eosim\dist\normaldist.cpp" />
+    <ClCompile Include="src\eosim\dist\numbergeneratorfactory.cpp" />
+    <ClCompile Include="src\eosim\dist\poissondist.cpp" />
+    <ClCompile Include="src\eosim\dist\uniformdist.cpp" />
+    <ClCompile Include="src\eosim\statics\histogram.cpp" />
+    <ClCompile Include="src\eosim\statics\observation.cpp" />
+    <ClCompile Include="src\eosim\statics\timeseries.cpp" />
+    <ClCompile Include="src\eosim\statics\timeweighted.cpp" />
+    <ClCompile Include="src\eosim\utils\beventmap.cpp" />
+    <ClCompile Include="src\eosim\utils\ceventvector.cpp" />
+    <ClCompile Include="src\eosim\utils\distvector.cpp" />
+    <ClCompile Include="src\eosim\utils\entityqueuefifo.cpp" />
+    <ClCompile Include="src\eosim\utils\entityqueuelifo.cpp" />
+    <ClCompile Include="src\eosim\utils\entityqueueordered.cpp" />
+    <ClCompile Include="src\eosim\graphic\display.cpp" />
+    <ClCompile Include="src\eosim\graphic\refreshgraphic.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Doxyfile" />
+    <None Include="Doxyfile_user" />
+    <None Include="pages\download.dox" />
+    <None Include="pages\main.dox" />
+    <None Include="pages\news.dox" />
+    <None Include="pages\prueba.css" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

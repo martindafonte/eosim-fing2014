@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{44a6c26c-aaba-480b-a437-076cd311129d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\eosim">
+      <UniqueIdentifier>{a26fd2d1-9964-495f-9d74-81c8e3539d79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\eosim\core">
+      <UniqueIdentifier>{5a1aea75-b1e1-48b3-8f6f-bb9d01db2d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\eosim\statics">
+      <UniqueIdentifier>{b1479d2b-5ef5-4524-b97d-01e641aeedee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\eosim\utils">
+      <UniqueIdentifier>{aa569734-34e7-46d3-afc5-1a4d0e2a933a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\eosim\graphic">
+      <UniqueIdentifier>{84f8437a-842a-4d74-bac3-21765347052c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\eosim\dist">
+      <UniqueIdentifier>{bc7a51d0-9f30-4b01-ac9c-9d972804a9f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{5366987e-7011-40c2-9ec9-2ab9cb0b1560}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eosim">
+      <UniqueIdentifier>{478f1073-020c-4edd-a3fa-c46700047cf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eosim\core">
+      <UniqueIdentifier>{e1da67f5-9ebb-4366-a5c9-2c97a006f446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eosim\dist">
+      <UniqueIdentifier>{1170091b-fb1c-4879-9a6c-d17ad198d8dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eosim\statics">
+      <UniqueIdentifier>{06d1ed2a-2348-4d5a-a33a-f4f9cebb06b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eosim\utils">
+      <UniqueIdentifier>{d5c049c0-a2ee-43a2-b58f-a4bd5bec3829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\eosim\graphic">
+      <UniqueIdentifier>{0686910b-567b-437b-83d7-6e7a2b013ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="documentation">
+      <UniqueIdentifier>{570408fd-a1d3-4fa1-b6e8-4cdab8650230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="documentation\pages">
+      <UniqueIdentifier>{1038b7cd-233e-437c-be22-5908fc943e90}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\eosim\core.hpp">
+      <Filter>include\eosim</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist.hpp">
+      <Filter>include\eosim</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\graphic.hpp">
+      <Filter>include\eosim</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\statics.hpp">
+      <Filter>include\eosim</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\utils.hpp">
+      <Filter>include\eosim</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\bcalendar.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\bevent.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\bin.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\ccalendar.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\cevent.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\entity.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\experiment.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\model.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\nonrenewable.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\core\renewable.hpp">
+      <Filter>include\eosim\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\statics\histogram.hpp">
+      <Filter>include\eosim\statics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\statics\observation.hpp">
+      <Filter>include\eosim\statics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\statics\timeseries.hpp">
+      <Filter>include\eosim\statics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\statics\timeweighted.hpp">
+      <Filter>include\eosim\statics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\utils\beventmap.hpp">
+      <Filter>include\eosim\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\utils\ceventvector.hpp">
+      <Filter>include\eosim\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\utils\distvector.hpp">
+      <Filter>include\eosim\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\utils\entityqueue.hpp">
+      <Filter>include\eosim\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\utils\entityqueuefifo.hpp">
+      <Filter>include\eosim\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\utils\entityqueuelifo.hpp">
+      <Filter>include\eosim\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\utils\entityqueueordered.hpp">
+      <Filter>include\eosim\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\graphic\display.hpp">
+      <Filter>include\eosim\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\graphic\refreshgraphic.hpp">
+      <Filter>include\eosim\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\distmanager.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\distribution.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\lognormaldist.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\mt19937.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\negexpdist.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\normaldist.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\numbergenerator.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\numbergeneratorfactory.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\poissondist.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+    <ClInclude Include="include\eosim\dist\uniformdist.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\eosim\core\bcalendar.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\bevent.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\bin.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\ccalendar.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\cevent.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\entity.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\experiment.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\model.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\nonrenewable.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\core\renewable.cpp">
+      <Filter>src\eosim\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\distmanager.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\distribution.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\lognormaldist.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\mt19937.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\negexpdist.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\normaldist.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\numbergeneratorfactory.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\poissondist.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\uniformdist.cpp">
+      <Filter>src\eosim\dist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\statics\histogram.cpp">
+      <Filter>src\eosim\statics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\statics\observation.cpp">
+      <Filter>src\eosim\statics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\statics\timeseries.cpp">
+      <Filter>src\eosim\statics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\statics\timeweighted.cpp">
+      <Filter>src\eosim\statics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\utils\beventmap.cpp">
+      <Filter>src\eosim\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\utils\ceventvector.cpp">
+      <Filter>src\eosim\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\utils\distvector.cpp">
+      <Filter>src\eosim\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\utils\entityqueuefifo.cpp">
+      <Filter>src\eosim\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\utils\entityqueuelifo.cpp">
+      <Filter>src\eosim\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\utils\entityqueueordered.cpp">
+      <Filter>src\eosim\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\graphic\display.cpp">
+      <Filter>src\eosim\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\graphic\refreshgraphic.cpp">
+      <Filter>src\eosim\graphic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Doxyfile">
+      <Filter>documentation</Filter>
+    </None>
+    <None Include="Doxyfile_user">
+      <Filter>documentation</Filter>
+    </None>
+    <None Include="pages\download.dox">
+      <Filter>documentation\pages</Filter>
+    </None>
+    <None Include="pages\main.dox">
+      <Filter>documentation\pages</Filter>
+    </None>
+    <None Include="pages\news.dox">
+      <Filter>documentation\pages</Filter>
+    </None>
+    <None Include="pages\prueba.css">
+      <Filter>documentation\pages</Filter>
+    </None>
+  </ItemGroup>
+</Project>
