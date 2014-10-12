@@ -17,12 +17,14 @@ int main () {
         Experiment e;
         std::cout << "Arranco ...\n";
         m.connectToExp(&e);
-        e.setSeed((unsigned long) 12 + 129);
-        e.run(160000.0);
+        e.setSeed((unsigned long) 100980 + 129);
+		e.run(runTime);
         std::cout << "Termine ...\n\n\n";
 		m.lCola.print(10);
 		std::cout << '\n';
 		m.tEspera.print(20);
+		m.tsCola.print(cantCeldas);
+		m.tsCola.print(cantCeldas,"timeSeries.txt");
 		std::cin >> s;
     //}
 }
