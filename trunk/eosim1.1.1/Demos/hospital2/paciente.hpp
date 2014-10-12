@@ -8,6 +8,7 @@
 // identificador del evento fijo PacienteFeeder
 const std::string pacienteF = "PacienteFeeder";
 const std::string tomarMedida = "TomarMedida";
+const std::string timeSeries = "TimeSeries";
 
 
 class PacienteFeeder: public eosim::core::BEvent {
@@ -44,5 +45,14 @@ public:
 	void eventRoutine(eosim::core::Entity* who);
 };
 
+class TimeSeries: public eosim::core::BEvent {
+public:
+	// constructor
+	TimeSeries(eosim::core::Model& model);
+	// destructor
+	~TimeSeries();
+	// rutina del evento fijo
+	void eventRoutine(eosim::core::Entity* who);
+};
 #endif
 

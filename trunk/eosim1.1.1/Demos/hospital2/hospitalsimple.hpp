@@ -4,10 +4,12 @@
 #include <eosim/core/model.hpp>
 #include <eosim/utils/entityqueuefifo.hpp>
 #include <eosim/core/renewable.hpp>
-#include <eosim/dist/normaldist.hpp>
+#include <eosim/dist/lognormaldist.hpp>
+#include <eosim/dist/empiricdist.hpp>
 #include <eosim/dist/negexpdist.hpp>
 #include <eosim/statics/timeweighted.hpp>
 #include <eosim/statics/observation.hpp>
+#include <eosim/statics/timeseries.hpp>
 #include "paciente.hpp"
 #include <iostream>
 #include <fstream>
@@ -30,15 +32,19 @@ private:
 	// evento de salida de los pacientes (fijo)
 	SalidaPaciente sP;
 
+	TimeSeries tS;
+
 	PromPonderado pPond;
+
+	double * a;
 
 public:
 	std::ofstream stream_archivo;
     double tiempoEntremedidas;
 	// distribucion aleatoria de arribos de pacientes (exponencial)
-	eosim::dist::NormalDist arribos;
+	eosim::dist::NegexpDist arribos;
 	// distribucion aleatoria de estadia de pacientes (exponencial)
-	eosim::dist::NegexpDist estadia;
+	eosim::dist::EmpiricDist estadia;
 	// cola de espera por camas
 	eosim::utils::EntityQueueFifo cola;
 	// camas del hospital
@@ -47,6 +53,7 @@ public:
 	eosim::statics::Observation tEspera;
 	// acumulador de datos sobre el largo medio de la cola
 	eosim::statics::TimeWeighted lCola;
+	eosim::statics::TimeSeries tsCola;
 	// constructor del modelo
 	HospitalSimple(unsigned int cantCamas, double tasaArribos, double tiempoEstadia);
 	// destructor del modelo
