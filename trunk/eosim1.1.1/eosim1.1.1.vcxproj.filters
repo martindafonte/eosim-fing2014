@@ -165,6 +165,9 @@
     <ClInclude Include="include\eosim\dist\uniformdist.hpp">
       <Filter>include\eosim\dist</Filter>
     </ClInclude>
+    <ClInclude Include="include\eosim\dist\empiricdist.hpp">
+      <Filter>include\eosim\dist</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\eosim\core\bcalendar.cpp">
@@ -259,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="src\eosim\graphic\refreshgraphic.cpp">
       <Filter>src\eosim\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eosim\dist\empiricdist.cpp">
+      <Filter>src\eosim\dist</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
