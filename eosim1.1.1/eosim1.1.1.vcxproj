@@ -79,6 +79,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\eosim\dist\empiricdist.hpp" />
     <ClInclude Include="include\eosim\core.hpp" />
     <ClInclude Include="include\eosim\dist.hpp" />
     <ClInclude Include="include\eosim\graphic.hpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="src\eosim\core\renewable.cpp" />
     <ClCompile Include="src\eosim\dist\distmanager.cpp" />
     <ClCompile Include="src\eosim\dist\distribution.cpp" />
+    <ClCompile Include="src\eosim\dist\empiricdist.cpp" />
     <ClCompile Include="src\eosim\dist\lognormaldist.cpp" />
     <ClCompile Include="src\eosim\dist\mt19937.cpp" />
     <ClCompile Include="src\eosim\dist\negexpdist.cpp" />
