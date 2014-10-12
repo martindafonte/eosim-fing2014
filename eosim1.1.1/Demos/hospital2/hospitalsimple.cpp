@@ -2,6 +2,7 @@
 #include <eosim/core/entity.hpp>
 #include <eosim/dist/numbergenerator.hpp>
 #include <iostream>
+#include<math.h>
 #include "constantes.hpp"
 
 using namespace eosim::core;
@@ -18,14 +19,12 @@ HospitalSimple::HospitalSimple(unsigned int cantCamas, double tasaArribos, doubl
 								pPond(*this),
 								tS(*this),
 								arribos(MT19937,tasaArribos),
-								estadia(MT19937,a =new double[3],3),
+								estadia(MT19937,tiempoEstadia,20),
 								camas(cantCamas, cantCamas),
 								tEspera("Tiempos de Espera"),
+								r(*this),
 								lCola("Largos Medios de Colas", *this),
 								tsCola("Time Series",*this){
-									a[0]=0;
-									a[1]=0.5;
-									a[2]=1;
 stream_archivo.open("salida_promedio.txt", ofstream::out);
 tiempoEntremedidas = tiempoEntreMedidasConst;
 }
@@ -42,6 +41,7 @@ void HospitalSimple::init() {
 	registerBEvent(&sP);
 	registerBEvent(&pPond);
 	registerBEvent(&tS);
+	registerBEvent(&r);
 	// registro las distribuciones
 	registerDist(&arribos);
 	registerDist(&estadia);
@@ -51,6 +51,7 @@ void HospitalSimple::doInitialSchedules() {
 	// agendo el primer paciente
 	schedule(0.0, new Entity(), pacienteF);
 	schedule(0.0, new Entity(),tomarMedida);
-	schedule(0.0, new Entity(),timeSeries);
+	schedule(0.0, new Entity(),timeSeries);		
+	schedule(200000.0,new Entity(),reset);
 }
 

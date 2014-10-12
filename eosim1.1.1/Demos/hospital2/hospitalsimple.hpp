@@ -36,6 +36,8 @@ private:
 
 	PromPonderado pPond;
 
+	Reset r;
+
 	double * a;
 
 public:
@@ -44,7 +46,7 @@ public:
 	// distribucion aleatoria de arribos de pacientes (exponencial)
 	eosim::dist::NegexpDist arribos;
 	// distribucion aleatoria de estadia de pacientes (exponencial)
-	eosim::dist::EmpiricDist estadia;
+	eosim::dist::LogNormalDist estadia;
 	// cola de espera por camas
 	eosim::utils::EntityQueueFifo cola;
 	// camas del hospital
