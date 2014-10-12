@@ -64,7 +64,7 @@ PromPonderado::~PromPonderado() {}
 void PromPonderado::eventRoutine(Entity* who) {
 	HospitalSimple& m = dynamic_cast<HospitalSimple&>(owner);
 	m.stream_archivo <<m.getSimTime()<<"\t"<<m.lCola.getMean()<<std::endl;
-	m.schedule(20,who,tomarMedida);
+	m.schedule(100,who,tomarMedida);
 }
 
 // en el constructor se utiliza el identificador definido en paciente.hpp
@@ -76,4 +76,16 @@ void TimeSeries::eventRoutine(Entity* who) {
 	HospitalSimple& m = dynamic_cast<HospitalSimple&>(owner);
 	m.tsCola.log(m.cola.size());
 	m.schedule(m.tiempoEntremedidas,who,timeSeries);
+}
+
+// en el constructor se utiliza el identificador definido en paciente.hpp
+Reset::Reset(Model& model): BEvent(reset, model) {}
+
+Reset::~Reset() {}
+
+void Reset::eventRoutine(Entity* who) {
+	HospitalSimple& m = dynamic_cast<HospitalSimple&>(owner);
+	m.lCola.reset();
+	m.tEspera.reset();
+	m.tsCola.reset();
 }

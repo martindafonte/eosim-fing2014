@@ -44,7 +44,7 @@ void Llega_v::eventRoutine(eosim::core::Entity* who){
 	}
 	((Vehiculo*)who)->setCarril(c);
     // se agenda el arribo del proximo vehiculo
-	std::cout << "Ingresó un vehículo al carril "<<c<<" en " << who->getClock() << "\n";
+	//std::cout << "Ingresó un vehículo al carril "<<c<<" en " << who->getClock() << "\n";
 	t.schedule(t.dis_llegada.sample(), new Vehiculo(), llega_v);
 };
 
@@ -72,7 +72,7 @@ void Fin_cruzar::eventRoutine(eosim::core::Entity* who){
 			break;
 		}
 	}
-	std::cout << "Salió un vehículo del carril "<<((Vehiculo*)who)->getCarril()<<" en "<< who->getClock() << "\n";
+	//std::cout << "Salió un vehículo del carril "<<((Vehiculo*)who)->getCarril()<<" en "<< who->getClock() << "\n";
 	delete who;
 };
 
@@ -88,7 +88,7 @@ void Luz_verde::eventRoutine(eosim::core::Entity* who){
 	t.semaforo->verde=true;
 	//Agendo cambio de luz
 	t.schedule(t.tiempo_Verde,who,luz_roja);
-	std::cout<< "LUZ VERDE"<<"\n";
+	//std::cout<< "LUZ VERDE"<<"\n";
 };
 
 Luz_roja::Luz_roja(eosim::core::Model& model):BEvent(luz_roja,model){};
@@ -103,7 +103,7 @@ void Luz_roja::eventRoutine(eosim::core::Entity* who){
 	t.semaforo->verde=false;
 	//Agendo cambio de luz
 	t.schedule(t.tiempo_Roja,who,luz_verde);
-	std::cout<< "LUZ ROJA"<<"\n";
+	//std::cout<< "LUZ ROJA"<<"\n";
 };
 
 Ini_cruzar_di::Ini_cruzar_di(eosim::core::Model& model):CEvent(model){};

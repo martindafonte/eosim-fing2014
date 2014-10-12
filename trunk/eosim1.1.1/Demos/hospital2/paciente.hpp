@@ -9,6 +9,7 @@
 const std::string pacienteF = "PacienteFeeder";
 const std::string tomarMedida = "TomarMedida";
 const std::string timeSeries = "TimeSeries";
+const std::string reset = "Reset";
 
 
 class PacienteFeeder: public eosim::core::BEvent {
@@ -51,6 +52,16 @@ public:
 	TimeSeries(eosim::core::Model& model);
 	// destructor
 	~TimeSeries();
+	// rutina del evento fijo
+	void eventRoutine(eosim::core::Entity* who);
+};
+
+class Reset: public eosim::core::BEvent {
+public:
+	// constructor
+	Reset(eosim::core::Model& model);
+	// destructor
+	~Reset();
 	// rutina del evento fijo
 	void eventRoutine(eosim::core::Entity* who);
 };
