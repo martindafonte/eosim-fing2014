@@ -45,6 +45,7 @@
     <OutDir>bin\</OutDir>
     <IntDir>Debug\</IntDir>
     <LinkIncremental />
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>bin\</OutDir>
@@ -119,6 +120,10 @@
     <ProjectReference Include="..\..\eosim1.1.1.vcxproj">
       <Project>{bba65b36-c6a1-42ab-a6be-cf034ef1dc38}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <Private>true</Private>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
