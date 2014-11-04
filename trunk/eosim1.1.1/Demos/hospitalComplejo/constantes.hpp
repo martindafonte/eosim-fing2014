@@ -10,7 +10,7 @@ const int seed_preop_stay = 4;
 const int seed_operation = 5;
 const int seed_postop_stay = 6;
 
-const double runTime = 500000.0;
+const double runTime = 14*24;
 
 //Variables del problema
 const int theater_open_time = 4;
