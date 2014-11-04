@@ -26,8 +26,8 @@ Este modelo esta construido en 2 fases
 class HospitalComplejo: public eosim::core::Model {
 private:
 	double * a;
-	PacienteFeeder1 b1;
-	PacienteFeeder2 b2;
+	PacienteOperacion b1;
+	PacienteHospital b2;
 	EndHospitalStay b3;
 	EndPreOperativeStay b4;
 	EndOperation b5;

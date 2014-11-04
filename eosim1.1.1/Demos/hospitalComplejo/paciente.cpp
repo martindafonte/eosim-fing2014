@@ -6,14 +6,23 @@ using namespace eosim::core;
 
 //comienzo eventos complejos
 //comienzo eventos complejos
-PacienteFeeder1::	PacienteFeeder1(eosim::core::Model& model):BEvent(pacienteFeeder1, model){};
-PacienteFeeder1::	~PacienteFeeder1(){};
-void PacienteFeeder1::eventRoutine(eosim::core::Entity* who)
-	{};
+PacienteOperacion::	PacienteOperacion(eosim::core::Model& model):BEvent(pacienteOperacion, model){};
+PacienteOperacion::	~PacienteOperacion(){};
+void PacienteOperacion::eventRoutine(eosim::core::Entity* who){
+	HospitalComplejo hc = (HospitalComplejo &) this->owner;
+	hc.hist_cola1.log(hc.cola_1.size);
+	hc.cola_1.push(who);
+	hc.schedule(hc.dis_arribos_opercion.sample(),new Entity(),pacienteOperacion);
+};
 
-PacienteFeeder2::	PacienteFeeder2(eosim::core::Model& model):BEvent(pacienteFeeder2, model){};
-PacienteFeeder2::	~PacienteFeeder2(){};
-void PacienteFeeder2::	eventRoutine(eosim::core::Entity* who){};
+PacienteHospital::	PacienteHospital(eosim::core::Model& model):BEvent(pacienteHospital, model){};
+PacienteHospital::	~PacienteHospital(){};
+void PacienteHospital::	eventRoutine(eosim::core::Entity* who){
+HospitalComplejo hc = (HospitalComplejo &) this->owner;
+	hc.hist_cola2.log(hc.cola_2.size);
+	hc.cola_2.push(who);
+	hc.schedule(hc.dis_arribos_hospital.sample(),new Entity(),pacienteHospital);
+};
 
 
 //end_hospital_stay
