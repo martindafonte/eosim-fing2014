@@ -82,8 +82,6 @@ public:
 
 
 
-	//variables fuera de la imp del problema
-	std::ofstream stream_archivo;
 };
 
 #endif

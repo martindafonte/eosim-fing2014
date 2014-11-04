@@ -42,9 +42,6 @@ HospitalComplejo::HospitalComplejo():
 								{}
 
 HospitalComplejo::~HospitalComplejo() {
-	stream_archivo.flush();
-	stream_archivo.close();
-	stream_archivo;
 }
 
 void HospitalComplejo::init() {
