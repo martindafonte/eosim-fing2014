@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "repair3", "Demos\repair3\re
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "traffic", "Demos\trafico\trafic.vcxproj", "{1E469272-BB0B-4873-92F4-B3E5F4DC412F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hospitalComplejo", "Demos\hospitalComplejo\hospitalComplejo.vcxproj", "{C7F007A2-A034-42BC-8E03-B82CE4BB8D5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -37,6 +39,10 @@ Global
 		{1E469272-BB0B-4873-92F4-B3E5F4DC412F}.Debug|Win32.Build.0 = Debug|Win32
 		{1E469272-BB0B-4873-92F4-B3E5F4DC412F}.Release|Win32.ActiveCfg = Release|Win32
 		{1E469272-BB0B-4873-92F4-B3E5F4DC412F}.Release|Win32.Build.0 = Release|Win32
+		{C7F007A2-A034-42BC-8E03-B82CE4BB8D5D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C7F007A2-A034-42BC-8E03-B82CE4BB8D5D}.Debug|Win32.Build.0 = Debug|Win32
+		{C7F007A2-A034-42BC-8E03-B82CE4BB8D5D}.Release|Win32.ActiveCfg = Release|Win32
+		{C7F007A2-A034-42BC-8E03-B82CE4BB8D5D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
