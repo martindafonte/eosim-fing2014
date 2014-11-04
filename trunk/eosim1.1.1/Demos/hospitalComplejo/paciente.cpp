@@ -1,91 +1,70 @@
 #include "paciente.hpp"
-#include "hospitalsimple.hpp"
+#include "hospitalcomplejo.hpp"
 #include <iostream>
 #include <math.h>
 using namespace eosim::core;
 
+//comienzo eventos complejos
+//comienzo eventos complejos
+PacienteFeeder1::	PacienteFeeder1(eosim::core::Model& model):BEvent(pacienteFeeder1, model){};
+PacienteFeeder1::	~PacienteFeeder1(){};
+void PacienteFeeder1::eventRoutine(eosim::core::Entity* who)
+	{};
 
-// en el constructor se utiliza el identificador definido en paciente.hpp
-// en el constructor se utiliza el identificador definido en pacientefeeder.hpp
-PacienteFeeder::PacienteFeeder(Model& model): BEvent(pacienteF, model) {}
+PacienteFeeder2::	PacienteFeeder2(eosim::core::Model& model):BEvent(pacienteFeeder2, model){};
+PacienteFeeder2::	~PacienteFeeder2(){};
+void PacienteFeeder2::	eventRoutine(eosim::core::Entity* who){};
 
-PacienteFeeder::~PacienteFeeder() {}
 
-void PacienteFeeder::eventRoutine(Entity* who) {
-	// se anuncia la llegada del paciente
-	//std::cout << "llego un paciente en " << who->getClock() << "\n";
-	// se castea owner a un HospitalSimple
-	HospitalSimple& h = dynamic_cast<HospitalSimple&>(owner);
-	if (h.camas.isAvailable(1)) {
-		h.camas.acquire(1);
-		//std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";
-		h.tEspera.log(h.getSimTime() - who->getClock());
-		h.schedule(h.estadia.sample(), who, salidaP);
-	}
-	else {
-        // se acumulan datos en los histogramas
-        h.lCola.log(h.cola.size());
-		// se pone al paciente recien llegado en la cola
-		h.cola.push(who);
-	}
-    // se agenda el arribo del un nuevo paciente
-	h.schedule(std::max(h.arribos.sample(),0.0), new Entity(), pacienteF);
-}
+//end_hospital_stay
+EndHospitalStay::	EndHospitalStay(eosim::core::Model& model):BEvent(endHospitalStay, model){};
+EndHospitalStay::	~EndHospitalStay(){};
+void EndHospitalStay::	eventRoutine(eosim::core::Entity* who){};
 
-// en el constructor se utiliza el identificador definido en paciente.hpp
-SalidaPaciente::SalidaPaciente(Model& model): BEvent(salidaP, model) {}
+//end_pre_operative_stay
+EndPreOperativeStay::	EndPreOperativeStay(eosim::core::Model& model):BEvent(endPreOperativeStay, model){};
+EndPreOperativeStay::	~EndPreOperativeStay(){};
+void EndPreOperativeStay::	eventRoutine(eosim::core::Entity* who){};
 
-SalidaPaciente::~SalidaPaciente() {}
 
-void SalidaPaciente::eventRoutine(Entity* who) {
-	// se informa la salida de un paciente
-	//std::cout << "un paciente se retira en " << who->getClock() << "\n";
-	// se castea owner a un HospitalSimple
-	HospitalSimple& h = dynamic_cast<HospitalSimple&>(owner);
-	// se retorna la cama que el paciente ocupaba
-	h.camas.returnBin(1);
-	if (!h.cola.empty()) {
-		h.camas.acquire(1);
-		//std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";
-        h.lCola.log(h.cola.size());
-		Entity* ent = h.cola.pop();
-		h.tEspera.log(h.getSimTime() - ent->getClock());
-		h.schedule(h.estadia.sample(), ent, salidaP);
-	}
-	// se elimina al paciente del sistema
-	delete who;
-}
+//end_operation
+EndOperation::	EndOperation(eosim::core::Model& model):BEvent(endOperation, model){};
+EndOperation::	~EndOperation(){};
+void EndOperation::	eventRoutine(eosim::core::Entity* who){};
 
-// en el constructor se utiliza el identificador definido en paciente.hpp
-PromPonderado::PromPonderado(Model& model): BEvent(tomarMedida, model) {}
 
-PromPonderado::~PromPonderado() {}
+//end_post_operative_stay
+EndPostOperativeStay::	EndPostOperativeStay(eosim::core::Model& model):BEvent(endPostOperativeStay, model){};
+EndPostOperativeStay::	~EndPostOperativeStay(){};
+void EndPostOperativeStay::	eventRoutine(eosim::core::Entity* who){};
 
-void PromPonderado::eventRoutine(Entity* who) {
-	HospitalSimple& m = dynamic_cast<HospitalSimple&>(owner);
-	m.stream_archivo <<m.getSimTime()<<"\t"<<m.lCola.getMean()<<std::endl;
-	m.schedule(100,who,tomarMedida);
-}
+//open_theater
+OpenTheater::	OpenTheater(eosim::core::Model& model):BEvent(openTheater, model){};
+OpenTheater::	~OpenTheater(){};
+void OpenTheater::	eventRoutine(eosim::core::Entity* who){};
 
-// en el constructor se utiliza el identificador definido en paciente.hpp
-TimeSeries::TimeSeries(Model& model): BEvent(timeSeries, model) {}
+//close_theater
+CloseTheater::	CloseTheater(eosim::core::Model& model):BEvent(closeTheater, model){};
+CloseTheater::	~CloseTheater(){};
+void CloseTheater::	eventRoutine(eosim::core::Entity* who){};
 
-TimeSeries::~TimeSeries() {}
+//start_hospital_stay
+StartHospitalStay::	StartHospitalStay(eosim::core::Model& model):CEvent(model){};
+StartHospitalStay::	~StartHospitalStay(){};
+void StartHospitalStay:: eventRoutine(){};
 
-void TimeSeries::eventRoutine(Entity* who) {
-	HospitalSimple& m = dynamic_cast<HospitalSimple&>(owner);
-	m.tsCola.log(m.cola.size());
-	m.schedule(m.tiempoEntremedidas,who,timeSeries);
-}
+//start_pre_operative_stay
+StartPreOperativeStay::	StartPreOperativeStay(eosim::core::Model& model):CEvent(model){};
+StartPreOperativeStay::	~StartPreOperativeStay(){};
+void StartPreOperativeStay:: eventRoutine(){};
 
-// en el constructor se utiliza el identificador definido en paciente.hpp
-Reset::Reset(Model& model): BEvent(reset, model) {}
+//start_operation
+StartOperation::	StartOperation(eosim::core::Model& model):CEvent(model){};
+StartOperation::	~StartOperation(){};
+void StartOperation::	eventRoutine(){};
 
-Reset::~Reset() {}
-
-void Reset::eventRoutine(Entity* who) {
-	HospitalSimple& m = dynamic_cast<HospitalSimple&>(owner);
-	m.lCola.reset();
-	m.tEspera.reset();
-	m.tsCola.reset();
-}
+//start_post_operative_stay
+StartPostOperativeStay::	StartPostOperativeStay(eosim::core::Model& model):CEvent(model){};
+StartPostOperativeStay::	~StartPostOperativeStay(){};
+void StartPostOperativeStay::	eventRoutine(){};
+//Fin eventos complejos
