@@ -77,7 +77,7 @@ void HospitalComplejo::init() {
 
 void HospitalComplejo::doInitialSchedules() {
 	// agendo el primer paciente
-	schedule(0.0, new Entity(), pacienteFeeder1);
-	schedule(0.0, new Entity(), pacienteFeeder2);
+	schedule(0.0, new Entity(), pacienteHospital);
+	schedule(0.0, new Entity(), pacienteOperacion);
 }
 

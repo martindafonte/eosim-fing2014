@@ -10,7 +10,7 @@ PacienteOperacion::	PacienteOperacion(eosim::core::Model& model):BEvent(paciente
 PacienteOperacion::	~PacienteOperacion(){};
 void PacienteOperacion::eventRoutine(eosim::core::Entity* who){
 	HospitalComplejo hc = (HospitalComplejo &) this->owner;
-	hc.hist_cola1.log(hc.cola_1.size);
+	hc.hist_cola1.log(hc.cola_1.size());
 	hc.cola_1.push(who);
 	hc.schedule(hc.dis_arribos_opercion.sample(),new Entity(),pacienteOperacion);
 };
@@ -19,7 +19,7 @@ PacienteHospital::	PacienteHospital(eosim::core::Model& model):BEvent(pacienteHo
 PacienteHospital::	~PacienteHospital(){};
 void PacienteHospital::	eventRoutine(eosim::core::Entity* who){
 HospitalComplejo hc = (HospitalComplejo &) this->owner;
-	hc.hist_cola2.log(hc.cola_2.size);
+	hc.hist_cola2.log(hc.cola_2.size());
 	hc.cola_2.push(who);
 	hc.schedule(hc.dis_arribos_hospital.sample(),new Entity(),pacienteHospital);
 };
