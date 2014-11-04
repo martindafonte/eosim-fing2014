@@ -2,68 +2,114 @@
 #define PACIENTE_HPP_
 
 #include <eosim/core/bevent.hpp>
+#include <eosim/core/cevent.hpp>
 #include <eosim/core/entity.hpp>
 #include <string>
 
-// identificador del evento fijo PacienteFeeder
-const std::string pacienteF = "PacienteFeeder";
-const std::string tomarMedida = "TomarMedida";
-const std::string timeSeries = "TimeSeries";
-const std::string reset = "Reset";
-
-
-class PacienteFeeder: public eosim::core::BEvent {
+const std::string pacienteFeeder1 = "PacienteFeeder1";
+class PacienteFeeder1: public eosim::core::BEvent {
 public:
-	// constructor
-	PacienteFeeder(eosim::core::Model& model);
-	// destructor
-	~PacienteFeeder();
-	// rutina del evento fijo
+	PacienteFeeder1(eosim::core::Model& model);
+	~PacienteFeeder1();
 	void eventRoutine(eosim::core::Entity* who);
 };
 
-// identificador del evento fijo SalidaPaciente
-const std::string salidaP = "SalidaPaciente";
-
-
-class SalidaPaciente: public eosim::core::BEvent {
+const std::string pacienteFeeder2 = "PacienteFeeder2";
+class PacienteFeeder2: public eosim::core::BEvent {
 public:
-	// constructor
-	SalidaPaciente(eosim::core::Model& model);
-	// destructor
-	~SalidaPaciente();
-	// rutina del evento fijo
+	PacienteFeeder2(eosim::core::Model& model);
+	~PacienteFeeder2();
 	void eventRoutine(eosim::core::Entity* who);
 };
 
-class PromPonderado: public eosim::core::BEvent {
+const std::string endHospitalStay = "EndHospitalStay";
+//end_hospital_stay
+class EndHospitalStay: public eosim::core::BEvent {
 public:
-	// constructor
-	PromPonderado(eosim::core::Model& model);
-	// destructor
-	~PromPonderado();
-	// rutina del evento fijo
+	EndHospitalStay(eosim::core::Model& model);
+	~EndHospitalStay();
 	void eventRoutine(eosim::core::Entity* who);
 };
 
-class TimeSeries: public eosim::core::BEvent {
+const std::string endPreOperativeStay = "EndPreOperativeStay";
+//end_pre_operative_stay
+class EndPreOperativeStay: public eosim::core::BEvent {
 public:
-	// constructor
-	TimeSeries(eosim::core::Model& model);
-	// destructor
-	~TimeSeries();
-	// rutina del evento fijo
+	EndPreOperativeStay(eosim::core::Model& model);
+	~EndPreOperativeStay();
 	void eventRoutine(eosim::core::Entity* who);
 };
 
-class Reset: public eosim::core::BEvent {
+const std::string endOperation = "EndOperation";
+//end_operation
+class EndOperation: public eosim::core::BEvent {
 public:
-	// constructor
-	Reset(eosim::core::Model& model);
-	// destructor
-	~Reset();
-	// rutina del evento fijo
+	EndOperation(eosim::core::Model& model);
+	~EndOperation();
 	void eventRoutine(eosim::core::Entity* who);
+};
+
+const std::string endPostOperativeStay = "EndPostOperativeStay";
+//end_post_operative_stay
+class EndPostOperativeStay: public eosim::core::BEvent {
+public:
+	EndPostOperativeStay(eosim::core::Model& model);
+	~EndPostOperativeStay();
+	void eventRoutine(eosim::core::Entity* who);
+};
+
+const std::string openTheater = "OpenTheater";
+//open_theater
+class OpenTheater: public eosim::core::BEvent {
+public:
+	OpenTheater(eosim::core::Model& model);
+	~OpenTheater();
+	void eventRoutine(eosim::core::Entity* who);
+};
+
+const std::string closeTheater = "CloseTheater";
+//close_theater
+class CloseTheater: public eosim::core::BEvent {
+public:
+	CloseTheater(eosim::core::Model& model);
+	~CloseTheater();
+	void eventRoutine(eosim::core::Entity* who);
+};
+
+const std::string startHospitalStay = "StartHospitalStay";
+//start_hospital_stay
+class StartHospitalStay: public eosim::core::CEvent {
+public:
+	StartHospitalStay(eosim::core::Model& model);
+	~StartHospitalStay();
+	void eventRoutine();
+};
+
+const std::string startPreOperativeStay = "StartPreOperativeStay";
+//start_pre_operative_stay
+class StartPreOperativeStay: public eosim::core::CEvent {
+public:
+	StartPreOperativeStay(eosim::core::Model& model);
+	~StartPreOperativeStay();
+	void eventRoutine();
+};
+
+const std::string startOperation = "StartOperation";
+//start_operation
+class StartOperation: public eosim::core::CEvent {
+public:
+	StartOperation(eosim::core::Model& model);
+	~StartOperation();
+	void eventRoutine();
+};
+
+const std::string startPostOperativeStay = "StartPostOperativeStay";
+//start_post_operative_stay
+class StartPostOperativeStay: public eosim::core::CEvent {
+public:
+	StartPostOperativeStay(eosim::core::Model& model);
+	~StartPostOperativeStay();
+	void eventRoutine();
 };
 #endif
 

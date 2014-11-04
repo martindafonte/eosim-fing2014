@@ -102,13 +102,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="hospitalsimple.cpp" />
+    <ClCompile Include="hospitalcomplejo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="paciente.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constantes.hpp" />
-    <ClInclude Include="hospitalsimple.hpp" />
+    <ClInclude Include="hospitalcomplejo.hpp" />
     <ClInclude Include="paciente.hpp" />
   </ItemGroup>
   <ItemGroup>
