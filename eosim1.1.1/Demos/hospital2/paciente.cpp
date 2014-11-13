@@ -15,7 +15,7 @@ void PacienteFeeder::eventRoutine(Entity* who) {
 	// se anuncia la llegada del paciente
 	//std::cout << "llego un paciente en " << who->getClock() << "\n";
 	// se castea owner a un HospitalSimple
-	HospitalSimple& h = dynamic_cast<HospitalSimple&>(owner);
+	HospitalSimple& h= dynamic_cast<HospitalSimple&>(owner);
 	if (h.camas.isAvailable(1)) {
 		h.camas.acquire(1);
 		//std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";

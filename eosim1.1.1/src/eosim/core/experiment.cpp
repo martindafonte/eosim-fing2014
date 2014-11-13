@@ -106,4 +106,3 @@ void Experiment::registerCEvent (CEvent* cEv) {
 double Experiment::getSimTime() {
     return bCal.getSimTime();
 }
-
