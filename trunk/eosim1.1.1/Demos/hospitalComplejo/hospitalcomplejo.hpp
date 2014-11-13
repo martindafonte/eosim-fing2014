@@ -9,6 +9,7 @@
 #include <eosim/dist/normaldist.hpp>
 #include <eosim/dist/empiricdist.hpp>
 #include <eosim/dist/negexpdist.hpp>
+#include <eosim/dist/uniformdist.hpp>
 #include <eosim/statics/timeweighted.hpp>
 #include <eosim/statics/observation.hpp>
 #include <eosim/statics/timeseries.hpp>
@@ -22,12 +23,14 @@ Simulation Modelling with Pascal - Ruth Davies, Robert O'Keefe
 
 Este modelo esta construido en 2 fases
 */
+class Theater : public eosim::core::Entity{
+public:
+	bool open, available;
+};
 
 class HospitalComplejo: public eosim::core::Model {
 private:
-	double * a;
-	PacienteOperacion b1;
-	PacienteHospital b2;
+	Paciente b1;
 	EndHospitalStay b3;
 	EndPreOperativeStay b4;
 	EndOperation b5;
@@ -51,19 +54,14 @@ public:
 	
     double tiempoEntremedidas;
 	// distribucion aleatoria de arribos de pacientes (exponencial negativa)
-	eosim::dist::NegexpDist dis_arribos_hospital;
+	//eosim::dist::NegexpDist dis_arribos_hospital;
+	eosim::dist::UniformDist dis_tipo_paciente;
 	eosim::dist::NegexpDist dis_arribos_opercion;
 	eosim::dist::NegexpDist dis_hospital_stay;
 	eosim::dist::NegexpDist dis_pre_operative_stay;
 	eosim::dist::NegexpDist dis_post_operative_stay;
-
 	eosim::dist::NormalDist dis_tiempo_operacion;
 
-	struct Theater
-	{
-		eosim::core::Entity body;
-		bool open, available;
-	};
 	Theater sala_operaciones;
 
 	
@@ -79,9 +77,6 @@ public:
 	void init();
 	// lleva al modelo a su estado inicial, operacion abstracta de eosim::core::Model
 	void doInitialSchedules();
-
-
-
 };
 
 #endif

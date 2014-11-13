@@ -6,19 +6,11 @@
 #include <eosim/core/entity.hpp>
 #include <string>
 
-const std::string pacienteOperacion = "PacienteOperacion";
-class PacienteOperacion: public eosim::core::BEvent {
+const std::string paciente = "Paciente";
+class Paciente: public eosim::core::BEvent {
 public:
-	PacienteOperacion(eosim::core::Model& model);
-	~PacienteOperacion();
-	void eventRoutine(eosim::core::Entity* who);
-};
-
-const std::string pacienteHospital = "PacienteHospital";
-class PacienteHospital: public eosim::core::BEvent {
-public:
-	PacienteHospital(eosim::core::Model& model);
-	~PacienteHospital();
+	Paciente(eosim::core::Model& model);
+	~Paciente();
 	void eventRoutine(eosim::core::Entity* who);
 };
 
