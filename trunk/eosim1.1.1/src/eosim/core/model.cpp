@@ -96,3 +96,7 @@ double Model::getSimTime() {
     assert(exp != 0 && "Model::getSimTime: Error getting the actual simulation time");
     return exp->getSimTime();
 }
+
+Entity * Model::removeNextBEvent(){
+	 return this->exp->removeNextBEvent();
+}

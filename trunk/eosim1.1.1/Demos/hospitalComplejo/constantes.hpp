@@ -19,7 +19,7 @@ const unsigned int cantCamas = 20;
 
 //valores distribución
 //const double tasaArribosHospital = 12.0;
-const double tasaArribosOperacion = 6.0;
+const double tasaArribos = 4; //pacientes por hora
 const double tiempoEstadiaHospital = 2.5*24;
 const double tiempoPreOperEstadia= 24.0;
 const double tiempoPostOperEstadia= 24.0*3;

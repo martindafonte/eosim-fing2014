@@ -7,6 +7,7 @@
 #include <eosim/core/renewable.hpp>
 #include <eosim/dist/lognormaldist.hpp>
 #include <eosim/dist/normaldist.hpp>
+#include <eosim/dist/poissondist.hpp>
 #include <eosim/dist/empiricdist.hpp>
 #include <eosim/dist/negexpdist.hpp>
 #include <eosim/dist/uniformdist.hpp>
@@ -62,7 +63,7 @@ public:
 	eosim::dist::NegexpDist dis_post_operative_stay;
 	eosim::dist::NormalDist dis_tiempo_operacion;
 
-	Theater sala_operaciones;
+	Theater  * sala_operaciones;
 
 	
 	// histogramas de la solución

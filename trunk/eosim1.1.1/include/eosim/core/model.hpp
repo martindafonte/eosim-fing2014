@@ -137,6 +137,8 @@ namespace core {
 		* \brief This operation returns the simulation’s actual time.
 		*/
         double getSimTime();
+
+		Entity * removeNextBEvent();
 	};
 
 }

@@ -56,6 +56,10 @@ void BCalendar::bPhase () {
     }    
 }
 
+Entity * BCalendar::removeNextEvent(){
+	return ents.pop();
+}
+
 bool BCalendar::isStopped() {
 	return simTime <= endSim && !ents.empty();
 }
