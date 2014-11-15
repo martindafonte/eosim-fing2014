@@ -4,6 +4,7 @@
 #include <math.h>
 #include "constantes.hpp"
 #include <cassert>
+#include <eosim/dist/uniformdist.hpp>
 using namespace eosim::core;
 
 //comienzo eventos complejos
@@ -12,20 +13,27 @@ Paciente::	Paciente(eosim::core::Model& model):BEvent(paciente, model){};
 Paciente::	~Paciente(){};
 void Paciente::eventRoutine(eosim::core::Entity* who){
 	HospitalComplejo& hc = dynamic_cast<HospitalComplejo&>(owner);
-	
-	if(hc.dis_tipo_paciente.sample() > 2){
-	//paciente hospital
-		hc.hist_cola2.log(hc.cola_2.size());
-		hc.cola_2.push(who);
-		std::cout << "Arribo de paciente hospital "<<hc.getSimTime() <<std::endl;
-	}else{
-		//paciente operación
+	Patient * p = (Patient *) who;
+	double prob = hc.dis_tipo_paciente.sample();
+	p->operacion =  prob < 2; //paciente operacion si es menor a 2
+	p->priority = floor(hc.dis_tipo_paciente.sample()); //probabilidades 0, 1, 2
+	if(p->operacion) {
+		std::cout << "Arribo de paciente operación "<<who->getClock() <<std::endl;
 		hc.hist_cola1.log(hc.cola_1.size());
 		hc.cola_1.push(who);
-		std::cout << "Arribo de paciente operación "<<who->getClock() <<std::endl;
+	}
+	else {
+		std::cout << "Arribo de paciente hospital "<<hc.getSimTime() <<std::endl;
+		hc.hist_cola2.log(hc.cola_2.size());
+		if(!seleccionRandomFromQueue) hc.cola_2.push(who);
+		else{
+			//si es selección random uso solo 1 cola
+			hc.hist_cola1.log(hc.cola_1.size());
+			hc.cola_1.push(who); 
+		}
 	}
 	double d = hc.dis_arribos_opercion.sample();
-	hc.schedule(d>0?d:0,new Entity(),paciente);
+	hc.schedule(d>0?d:0,new Patient(),paciente);
 	
 };
 
@@ -102,12 +110,35 @@ StartHospitalStay::	~StartHospitalStay(){};
 void StartHospitalStay:: eventRoutine(){
 	HospitalComplejo &hc = dynamic_cast<HospitalComplejo&>(owner);
 	while(hc.camas.isAvailable(1) && (!hc.cola_1.empty())) {
+		Patient * p;
+		int index = -1;
+		if(seleccionRandomFromQueue)
+		{
+			index = rand() % (hc.cola_1.size());
+		}else{
+			int max_priority = -1;
+		
+			for(int i =0;i<hc.cola_1.size();i++){
+				if(max_priority < ((Patient *)(hc.cola_1.operator[](i)))->priority){
+					index = i;
+				}
+			}
+		}
+		p= (Patient *)hc.cola_1.operator[](index);
+		hc.cola_1.remove(index);
 		hc.hist_camas.log(hc.camas.getMax()-hc.camas.getQuantity());
 		hc.camas.acquire(1);
 		hc.hist_cola1.log(hc.cola_1.size());
+
+		if(seleccionRandomFromQueue && p->operacion){// Si se selecciona random de 1 sola cola y se es del tipo operación
+			double d =hc.dis_pre_operative_stay.sample();
+			hc.schedule(d > 0 ?d:0,p,endPreOperativeStay);
+			std::cout << "Comienza estadia pre operacion "<<hc.getSimTime() <<std::endl;
+		}else{// Si no se selecciona random o es del tipo hospital
 		double d = hc.dis_hospital_stay.sample();
-		hc.schedule(d > 0 ?d:0,hc.cola_1.pop(),endHospitalStay);
+		hc.schedule(d > 0 ?d:0,p,endHospitalStay);
 		std::cout << "Comienza estadia hospital "<<hc.getSimTime() <<std::endl;
+		}
 	}
 };
 
@@ -119,9 +150,18 @@ void StartPreOperativeStay:: eventRoutine(){
 	while(hc.camas.isAvailable(1) && (!hc.cola_2.empty())) {
 		hc.hist_camas.log(hc.camas.getMax()-hc.camas.getQuantity());
 		hc.camas.acquire(1);
-		hc.hist_cola1.log(hc.cola_2.size());
+		hc.hist_cola2.log(hc.cola_2.size());
 		double d =hc.dis_pre_operative_stay.sample();
-		hc.schedule(d > 0 ?d:0,hc.cola_2.pop(),endPreOperativeStay);
+		int max_priority = -1;
+		int index = -1;
+			for(int i =0;i<hc.cola_2.size();i++){
+				if(max_priority < ((Patient *)(hc.cola_2.operator[](i)))->priority){
+					index = i;
+				}
+			}
+		Patient * p= (Patient *)hc.cola_2.operator[](index);
+		hc.cola_2.remove(index);
+		hc.schedule(d > 0 ?d:0,p,endPreOperativeStay);
 		std::cout << "Comienza estadia pre operacion "<<hc.getSimTime() <<std::endl;
 	}
 };
