@@ -104,14 +104,6 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="Imagenes\car1.png" />
-    <Image Include="Imagenes\car2.png" />
-    <Image Include="Imagenes\Fondo.jpg" />
-    <Image Include="Imagenes\roja.png" />
-    <Image Include="Imagenes\verde_l.png" />
-    <Image Include="Imagenes\verde_r.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

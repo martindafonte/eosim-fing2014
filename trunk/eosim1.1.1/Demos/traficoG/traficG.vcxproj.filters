@@ -39,24 +39,4 @@
       <UniqueIdentifier>{7426e882-0c3c-403a-9ece-8c0dcf7dc11b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="Imagenes\car1.png">
-      <Filter>Images</Filter>
-    </Image>
-    <Image Include="Imagenes\car2.png">
-      <Filter>Images</Filter>
-    </Image>
-    <Image Include="Imagenes\Fondo.jpg">
-      <Filter>Images</Filter>
-    </Image>
-    <Image Include="Imagenes\roja.png">
-      <Filter>Images</Filter>
-    </Image>
-    <Image Include="Imagenes\verde_l.png">
-      <Filter>Images</Filter>
-    </Image>
-    <Image Include="Imagenes\verde_r.png">
-      <Filter>Images</Filter>
-    </Image>
-  </ItemGroup>
 </Project>
