@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const unsigned int repeticiones = 10;
+const unsigned int repeticiones = 1;
 
 int main() {
     std::string s;
@@ -71,7 +71,7 @@ int main() {
 		cout<<"dd "<<lCola_dd[i]<<"	"<<tespera_dd[i]<<endl;		
 		cout<<"di "<<lCola_di[i]<<"	"<<tespera_di[i]<<endl<<endl<<endl;		
 	}
-	string s;
-	cin>>s;
+	string entrada;
+	cin>>entrada;
 	return 0;
 }

@@ -51,7 +51,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\include;..\..\..\libs\boost_1_33_1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -59,9 +59,9 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>eosim1.1_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>eosim1.1_d.lib;libagg23-d.lib;SDL.lib;SDLmain.lib;SDL_image.lib;freetype2110.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)traffic_d.exe</OutputFile>
-      <AdditionalLibraryDirectories>..\..\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\lib;..\..\..\libs\SDL_image-1.2.5\lib;..\..\..\libs\SDL-1.2.11\lib;..\..\..\libs\agg23\lib;..\..\..\libs\agg23\font_freetype;..\..\..\libs\freetype-2.1.10\objs;%(AdditionalLibraryDirectories);..\..\..\libs\boost_1_33_1</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
@@ -103,6 +103,14 @@
       <Project>{bba65b36-c6a1-42ab-a6be-cf034ef1dc38}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Imagenes\car1.png" />
+    <Image Include="Imagenes\car2.png" />
+    <Image Include="Imagenes\Fondo.jpg" />
+    <Image Include="Imagenes\roja.png" />
+    <Image Include="Imagenes\verde_l.png" />
+    <Image Include="Imagenes\verde_r.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

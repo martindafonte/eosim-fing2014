@@ -5,6 +5,7 @@
 #include "vehiculo.hpp"
 #include "Semaforo.hpp"
 #include <vector>
+#include <eosim/graphic.hpp>
 #include <eosim/core/model.hpp>
 #include <eosim/core/renewable.hpp>
 #include <eosim/dist/uniformdist.hpp>
@@ -35,7 +36,23 @@ private:
 	Ini_cruzar_ci eIniCruzarCI;
 	Ini_cruzar_cc eIniCruzarCC;
 	Ini_cruzar_cd eIniCruzarCD;
+	eosim::graphic::RefreshGraphic rG;
 public:
+	eosim::graphic::Display disp;
+	const std::pair<double, double> semaforo_l;
+	const std::pair<double, double> semaforo_r;
+	const std::pair<double, double> tamaño_auto;
+	const std::pair<double, double> inicio_di;
+	const std::pair<double, double> inicio_ci;
+	const std::pair<double, double> inicio_cc;
+	const std::pair<double, double> inicio_cd;
+	const std::pair<double, double> inicio_dd;
+	const std::pair<double, double> fin_di;
+	const std::pair<double, double> fin_ci;
+	const std::pair<double, double> fin_cc;
+	const std::pair<double, double> fin_cd;
+	const std::pair<double, double> fin_dd;
+
     // Doblar a la izquierda
     eosim::core::Renewable r_doblar_izq;
 	// Doblar a la derecha
