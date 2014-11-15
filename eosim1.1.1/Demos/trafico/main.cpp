@@ -17,11 +17,11 @@ int main() {
 	double lCola_dd [repeticiones];
 	double lCola_di [repeticiones];
 
-	double lCola_cc_max [repeticiones];
-	double lCola_ci_max [repeticiones];
-	double lCola_cd_max [repeticiones];
-	double lCola_dd_max [repeticiones];
-	double lCola_di_max [repeticiones];
+	//double lCola_cc_max [repeticiones];
+	//double lCola_ci_max [repeticiones];
+	//double lCola_cd_max [repeticiones];
+	//double lCola_dd_max [repeticiones];
+	//double lCola_di_max [repeticiones];
 
 	double tespera_cc [repeticiones];
 	double tespera_ci [repeticiones];
