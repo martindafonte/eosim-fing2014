@@ -8,6 +8,13 @@ const double media_der = 24.4;
 const double media_central= 73.6;
 const double tiempo_verde = 29;
 const double tiempo_roja = 21;
+//const char * imagen_rojo = "../Images/roja.png";
+//const char * imagen_verde_l = "../Images/verde_l.png";
+//const char * imagen_verde_r = "../Images/verde_r.png";
+//const char * imagen_auto_1 = "../Images/car1.png";
+//const char * imagen_auto_2 = "../Images/car2.png";
+//const char * imagen_fondo = "../Images/Fondo.jpg";
+
 
 enum Carriles
 {
