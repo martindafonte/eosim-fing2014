@@ -105,12 +105,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="images\car1.png" />
-    <Image Include="images\car2.png" />
-    <Image Include="images\Fondo.jpg" />
-    <Image Include="images\roja.png" />
-    <Image Include="images\verde_l.png" />
-    <Image Include="images\verde_r.png" />
+    <Image Include="Images\car1.png" />
+    <Image Include="Images\car2.png" />
+    <Image Include="Images\Fondo.jpg" />
+    <Image Include="Images\roja.png" />
+    <Image Include="Images\verde_l.png" />
+    <Image Include="Images\verde_r.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
