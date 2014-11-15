@@ -60,7 +60,9 @@ void HospitalComplejo::init() {
 
 	//registro los eventos C
 	registerCEvent(&c1);
-	registerCEvent(&c2);
+	if(!seleccionRandomFromQueue){//si selecciono random no se utiliza el evento c2 porque se usa solo 1 cola
+		registerCEvent(&c2);
+	}
 	registerCEvent(&c3);
 	registerCEvent(&c4);
 	
@@ -77,5 +79,5 @@ void HospitalComplejo::doInitialSchedules() {
 	//represento a la sala operaciones como 2 entidades, 1 para abrir y cerrar y otra para los pacientes
 	schedule(0.0,new Entity(),openTheater);
 	// agendo el primer paciente
-	schedule(0.0, new Entity(), paciente);
+	schedule(0.0, new Patient(), paciente);
 }

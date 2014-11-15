@@ -13,8 +13,8 @@ const int seed_postop_stay = 6;
 const double runTime = 14*24.0;
 
 //Variables del problema
-const int theater_open_time = 4.0;
-const int theather_close_time = 20.0;
+const int theater_open_time = 4;
+const int theather_close_time = 20;
 const unsigned int cantCamas = 20;
 
 //valores distribución
@@ -25,6 +25,8 @@ const double tiempoPreOperEstadia= 24.0;
 const double tiempoPostOperEstadia= 24.0*3;
 const double tiempoOperacion= 0.75;
 const double tiempoOperacionSD = 0.25;
+
+const bool seleccionRandomFromQueue = false;
 
 
 #endif

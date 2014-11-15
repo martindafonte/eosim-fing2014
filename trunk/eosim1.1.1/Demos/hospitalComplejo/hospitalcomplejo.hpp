@@ -29,6 +29,12 @@ public:
 	bool open, available;
 };
 
+class Patient : public eosim::core::Entity{
+public:
+	int priority;
+	bool operacion;
+};
+
 class HospitalComplejo: public eosim::core::Model {
 private:
 	Paciente b1;
@@ -38,6 +44,7 @@ private:
 	EndPostOperativeStay b6;
 	OpenTheater b7;
 	CloseTheater b8;
+	//Al definir c1 primero que c2 se le da prioridad a los pacientes que no tienen que operarse
 	StartHospitalStay c1;
 	StartPreOperativeStay c2;
 	StartOperation c3;
