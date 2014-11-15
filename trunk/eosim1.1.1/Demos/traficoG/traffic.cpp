@@ -69,5 +69,5 @@ void Traffic::init() {
 void Traffic::doInitialSchedules() {
 	schedule(0.0, semaforo, luz_verde);
 	schedule(0.0,new Vehiculo(),llega_v);
-	disp.setBackground("images\Fondo.jpg");
+	disp.setBackground("../images/Fondo.jpg");
 }
