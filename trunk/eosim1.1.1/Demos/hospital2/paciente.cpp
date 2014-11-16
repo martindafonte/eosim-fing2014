@@ -1,5 +1,6 @@
 #include "paciente.hpp"
 #include "hospitalsimple.hpp"
+#include "constantes.hpp"
 #include <iostream>
 #include <math.h>
 using namespace eosim::core;
@@ -16,17 +17,22 @@ void PacienteFeeder::eventRoutine(Entity* who) {
 	//std::cout << "llego un paciente en " << who->getClock() << "\n";
 	// se castea owner a un HospitalSimple
 	HospitalSimple& h= dynamic_cast<HospitalSimple&>(owner);
-	if (h.camas.isAvailable(1)) {
-		h.camas.acquire(1);
-		//std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";
-		h.tEspera.log(h.getSimTime() - who->getClock());
-		h.schedule(h.estadia.sample(), who, salidaP);
-	}
-	else {
-        // se acumulan datos en los histogramas
-        h.lCola.log(h.cola.size());
-		// se pone al paciente recien llegado en la cola
-		h.cola.push(who);
+	if(aviso_muerte_tardio && (h.prob_muerte.sample() > 95)){
+	//significa que el paciente no llegó
+		delete who;
+	}else{
+		if (h.camas.isAvailable(1)) {
+			h.camas.acquire(1);
+			//std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";
+			h.tEspera.log(h.getSimTime() - who->getClock());
+			h.schedule(h.estadia.sample(), who, salidaP);
+		}
+		else {
+		 // se acumulan datos en los histogramas
+		 h.lCola.log(h.cola.size());
+			// se pone al paciente recien llegado en la cola
+			h.cola.push(who);
+		}
 	}
     // se agenda el arribo del un nuevo paciente
 	h.schedule(std::max(h.arribos.sample(),0.0), new Entity(), pacienteF);
@@ -88,4 +94,22 @@ void Reset::eventRoutine(Entity* who) {
 	m.lCola.reset();
 	m.tEspera.reset();
 	m.tsCola.reset();
+}
+
+MuertePaciente::MuertePaciente(Model& model): BEvent(muertePaciente, model) {}
+
+MuertePaciente::~MuertePaciente() {}
+
+void MuertePaciente::eventRoutine(Entity* who) {
+	HospitalSimple& m = dynamic_cast<HospitalSimple&>(owner);
+	//desagendar un paciente
+	Entity * es;
+	if(( es = m.removeRandomBEvent(pacienteF)) == nullptr ){
+		std::cout<<"No se encontraron pacientes para desagendar"<<std::endl;
+	}else{
+		std::cout<<"paciente eliminado con éxito"<<std::endl;
+		delete es;
+	}
+	//agendar siguiente evento de muerte
+	m.schedule(m.dis_muertes.sample(),who,muertePaciente);
 }

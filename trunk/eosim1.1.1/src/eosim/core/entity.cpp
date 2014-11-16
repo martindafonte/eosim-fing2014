@@ -52,3 +52,6 @@ void Entity::processEvent () {
     bEv->eventRoutine(this);
 }
 
+bool Entity::isEvent(std::string eventName){
+			return this->bEv->getName().compare(eventName) == 0;
+		};

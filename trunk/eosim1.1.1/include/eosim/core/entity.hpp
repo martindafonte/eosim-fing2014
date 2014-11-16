@@ -19,7 +19,7 @@
 
 #ifndef ENTITY_HPP_
 #define ENTITY_HPP_
-
+#include <string>
 /** \ingroup modeling_group
  * \@{
 */
@@ -84,6 +84,8 @@ namespace core {
 		* \warning The programmer should not use this operation, it is invoked directly by EOSimulator.
 		*/
 		void processEvent ();
+
+		bool isEvent(std::string eventName);
 	};
 
 }

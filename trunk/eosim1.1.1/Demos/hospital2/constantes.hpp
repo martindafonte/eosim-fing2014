@@ -8,5 +8,6 @@ const double tiempoEstadia = 118;
 const double tiempoEntreMedidasConst= 2500;
 const int cantCeldas= 200;
 const double runTime = 500000.0;
+const bool aviso_muerte_tardio = true; //determina si el hospital se entera que el paicente murio cuando el mismo no se presenta (true) o en cuanto sucede la muerte (false)
 
 #endif

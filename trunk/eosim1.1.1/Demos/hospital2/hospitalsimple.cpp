@@ -18,11 +18,14 @@ HospitalSimple::HospitalSimple(unsigned int cantCamas, double tasaArribos, doubl
 								sP(*this),
 								pPond(*this),
 								tS(*this),
+								mP(*this),
+								dis_muertes(MT19937,73),
 								arribos(MT19937,tasaArribos),
 								estadia(MT19937,tiempoEstadia,20),
 								camas(cantCamas, cantCamas),
 								tEspera("Tiempos de Espera"),
 								r(*this),
+								prob_muerte(MT19937,0,100),
 								lCola("Largos Medios de Colas", *this),
 								tsCola("Time Series",*this){
 stream_archivo.open("salida_promedio.txt", ofstream::out);
@@ -42,9 +45,12 @@ void HospitalSimple::init() {
 	registerBEvent(&pPond);
 	registerBEvent(&tS);
 	registerBEvent(&r);
+	if(!aviso_muerte_tardio)		registerBEvent(&mP);
+	if(!aviso_muerte_tardio)		registerDist(&dis_muertes);
 	// registro las distribuciones
 	registerDist(&arribos);
 	registerDist(&estadia);
+	registerDist(&prob_muerte);
 }
 
 void HospitalSimple::doInitialSchedules() {
@@ -52,6 +58,7 @@ void HospitalSimple::doInitialSchedules() {
 	schedule(0.0, new Entity(), pacienteF);
 	schedule(0.0, new Entity(),tomarMedida);
 	schedule(0.0, new Entity(),timeSeries);		
+	if(!aviso_muerte_tardio) schedule(dis_muertes.sample(), new Entity(),muertePaciente);
 	schedule(200000.0,new Entity(),reset);
 }
 
