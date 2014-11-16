@@ -3,7 +3,8 @@
 
 // constantes del modelo del hospital simple
 const unsigned int cantCamas = 20;
-const double tasaArribos = 6;
+const double tasaArribos = 6; //es en realidad tiempo medio entre arribos
+const double tiempoMedioMuertes = 1752;
 const double tiempoEstadia = 118;
 const double tiempoEntreMedidasConst= 2500;
 const int cantCeldas= 200;

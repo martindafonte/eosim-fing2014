@@ -19,15 +19,17 @@ void PacienteFeeder::eventRoutine(Entity* who) {
 	HospitalSimple& h= dynamic_cast<HospitalSimple&>(owner);
 	if(aviso_muerte_tardio && (h.prob_muerte.sample() > 95)){
 	//significa que el paciente no llegó
+		std::cout<<"se eliminó una paciente en la llegada"<<std::endl;
 		delete who;
 	}else{
 		if (h.camas.isAvailable(1)) {
 			h.camas.acquire(1);
-			//std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";
+			std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";
 			h.tEspera.log(h.getSimTime() - who->getClock());
 			h.schedule(h.estadia.sample(), who, salidaP);
 		}
 		else {
+			std::cout << "un paciente arribo y no había cama" << h.getSimTime() << "\n";
 		 // se acumulan datos en los histogramas
 		 h.lCola.log(h.cola.size());
 			// se pone al paciente recien llegado en la cola
@@ -35,7 +37,7 @@ void PacienteFeeder::eventRoutine(Entity* who) {
 		}
 	}
     // se agenda el arribo del un nuevo paciente
-	h.schedule(std::max(h.arribos.sample(),0.0), new Entity(), pacienteF);
+	//h.schedule(std::max(h.arribos.sample(),0.0), new Entity(), pacienteF);
 }
 
 // en el constructor se utiliza el identificador definido en paciente.hpp
@@ -52,7 +54,7 @@ void SalidaPaciente::eventRoutine(Entity* who) {
 	h.camas.returnBin(1);
 	if (!h.cola.empty()) {
 		h.camas.acquire(1);
-		//std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";
+		std::cout << "un paciente fue aceptado en una cama " << h.getSimTime() << "\n";
         h.lCola.log(h.cola.size());
 		Entity* ent = h.cola.pop();
 		h.tEspera.log(h.getSimTime() - ent->getClock());

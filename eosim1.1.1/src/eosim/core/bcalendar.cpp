@@ -84,6 +84,7 @@ Entity * BCalendar::removeRandomBEvent(std::string EventName){
 					cantidad ++;
 				}
 			}
+			if(cantidad == 0) return nullptr;
 			int index = rand()%cantidad;
 			cantidad = 0;
 			for(int i = 0; i <ents.size(); i++){
