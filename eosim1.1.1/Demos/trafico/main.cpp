@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const unsigned int repeticiones = 10;
+const unsigned int repeticiones = 12;
 
 int main() {
     std::string s;
@@ -16,7 +16,7 @@ int main() {
 	double lCola_cd [repeticiones];
 	double lCola_dd [repeticiones];
 	double lCola_di [repeticiones];
-
+	double prom_llegada[repeticiones];
 	//double lCola_cc_max [repeticiones];
 	//double lCola_ci_max [repeticiones];
 	//double lCola_cd_max [repeticiones];
@@ -34,7 +34,7 @@ int main() {
 		eosim::core::Experiment e;
 		//std::cout << "Arranco ...\n";
 		t.connectToExp(&e);
-		e.setSeed((unsigned long) i * 137);
+		e.setSeed((unsigned long) i * 129);
 		e.run(500*50);
         //std::cout << "Termine ...\n\n\n";
 		lCola_cc[i]=t.lCola_cc.getMean();
@@ -48,6 +48,8 @@ int main() {
 		tespera_cd[i] = t.tEspera_cd.getMean();
 		tespera_dd[i] = t.tEspera_dd.getMean();
 		tespera_di[i] = t.tEspera_di.getMean();
+
+		prom_llegada[i] = t.tiempo_llegada / t.cant_vehiculos;
 		//int celdasCola=5;
 		//int celdasTiempo = 8;
 		//t.lCola_cc.print(celdasCola);
@@ -69,7 +71,9 @@ int main() {
 		cout<<"ci "<<lCola_ci[i]<<"	"<<tespera_ci[i]<<endl;		
 		cout<<"cd "<<lCola_cd[i]<<"	"<<tespera_cd[i]<<endl;		
 		cout<<"dd "<<lCola_dd[i]<<"	"<<tespera_dd[i]<<endl;		
-		cout<<"di "<<lCola_di[i]<<"	"<<tespera_di[i]<<endl<<endl<<endl;		
+		cout<<"di "<<lCola_di[i]<<"	"<<tespera_di[i]<<endl<<endl;
+		cout<<"promedio largo colas(X): "<<(lCola_cc[i]+lCola_ci[i]+lCola_cd[i]+lCola_dd[i]+lCola_di[i])/5 <<endl;
+		cout<<"promedio tiempo llegadas(Y): "<<prom_llegada[i] <<endl<<endl<<endl;		
 	}
 	string l;
 	cin>>l;
