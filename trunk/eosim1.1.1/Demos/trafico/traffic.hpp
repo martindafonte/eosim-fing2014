@@ -74,6 +74,8 @@ public:
 	double media_central;
 	double tiempo_Verde;
 	double tiempo_Roja;
+	double cant_vehiculos;
+	double tiempo_llegada;
     // cola de vehículos creados esperando elegir un carril
 	eosim::utils::EntityQueueFifo llegada;
     // cola de vehículos en los carriles

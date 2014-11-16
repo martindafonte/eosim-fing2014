@@ -45,7 +45,10 @@ void Llega_v::eventRoutine(eosim::core::Entity* who){
 	((Vehiculo*)who)->setCarril(c);
     // se agenda el arribo del proximo vehiculo
 	//std::cout << "Ingresó un vehículo al carril "<<c<<" en " << who->getClock() << "\n";
-	t.schedule(t.dis_llegada.sample(), new Vehiculo(), llega_v);
+	double d = t.dis_llegada.sample();
+	t.tiempo_llegada += d;
+	t.cant_vehiculos ++;
+	t.schedule(d, new Vehiculo(), llega_v);
 };
 
 Fin_cruzar::Fin_cruzar(eosim::core::Model& model):BEvent(fin_cruzar,model){};
