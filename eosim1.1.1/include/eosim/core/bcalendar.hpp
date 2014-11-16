@@ -22,6 +22,7 @@
 
 #include <eosim/core/entity.hpp>
 #include <eosim/utils/entityqueueordered.hpp>
+#include <math.h>
 
 /** \ingroup simuling_group
  * \@{
@@ -76,6 +77,8 @@ namespace core {
         double getSimTime();
 
 		Entity * removeNextEvent();
+
+		Entity * removeRandomBEvent(std::string EventName);
 	};
 	
 }

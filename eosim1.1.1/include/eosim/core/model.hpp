@@ -139,6 +139,8 @@ namespace core {
         double getSimTime();
 
 		Entity * removeNextBEvent();
+		
+		Entity * removeRandomBEvent(std::string EventName);
 	};
 
 }

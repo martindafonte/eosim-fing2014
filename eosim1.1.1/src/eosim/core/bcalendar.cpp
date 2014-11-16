@@ -77,3 +77,24 @@ double BCalendar::getSimTime() {
 	return simTime;
 }
 
+Entity * BCalendar::removeRandomBEvent(std::string EventName){
+			int cantidad = 0;
+			for(int i = 0; i <ents.size(); i++){
+				if(ents.operator[](i)->isEvent(EventName)){
+					cantidad ++;
+				}
+			}
+			int index = rand()%cantidad;
+			cantidad = 0;
+			for(int i = 0; i <ents.size(); i++){
+				if(ents.operator[](i)->isEvent(EventName)){
+					if(cantidad == index){
+						Entity * res = ents.operator[](i);
+						ents.remove(i);
+						return res;
+					}
+					cantidad ++;
+				}
+			}
+			return nullptr;
+		};

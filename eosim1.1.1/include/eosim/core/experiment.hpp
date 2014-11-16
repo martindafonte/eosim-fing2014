@@ -93,6 +93,8 @@ namespace core {
         double getSimTime();
 
 		Entity * removeNextBEvent(){ return bCal.removeNextEvent();}
+
+		Entity * removeRandomBEvent(std::string EventName){ return bCal.removeRandomBEvent(EventName);};
 	};
 	
 }

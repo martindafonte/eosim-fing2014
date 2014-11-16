@@ -100,3 +100,5 @@ double Model::getSimTime() {
 Entity * Model::removeNextBEvent(){
 	 return this->exp->removeNextBEvent();
 }
+
+Entity * Model::removeRandomBEvent(std::string EventName){ return this->exp->removeRandomBEvent(EventName);};

@@ -5,6 +5,7 @@
 #include <eosim/utils/entityqueuefifo.hpp>
 #include <eosim/core/renewable.hpp>
 #include <eosim/dist/lognormaldist.hpp>
+#include <eosim/dist/uniformdist.hpp>
 #include <eosim/dist/empiricdist.hpp>
 #include <eosim/dist/negexpdist.hpp>
 #include <eosim/statics/timeweighted.hpp>
@@ -32,6 +33,8 @@ private:
 	// evento de salida de los pacientes (fijo)
 	SalidaPaciente sP;
 
+	MuertePaciente mP;
+
 	TimeSeries tS;
 
 	PromPonderado pPond;
@@ -43,6 +46,10 @@ private:
 public:
 	std::ofstream stream_archivo;
     double tiempoEntremedidas;
+	//probabilidad de que el paciente no se presente
+	eosim::dist::UniformDist prob_muerte;
+	//distribucion de muertes en el año
+	eosim::dist::NegexpDist dis_muertes;
 	// distribucion aleatoria de arribos de pacientes (exponencial)
 	eosim::dist::NegexpDist arribos;
 	// distribucion aleatoria de estadia de pacientes (exponencial)
