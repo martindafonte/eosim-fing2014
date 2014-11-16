@@ -19,7 +19,7 @@ HospitalSimple::HospitalSimple(unsigned int cantCamas, double tasaArribos, doubl
 								pPond(*this),
 								tS(*this),
 								mP(*this),
-								dis_muertes(MT19937,73),
+								dis_muertes(MT19937,tiempoMedioMuertes),
 								arribos(MT19937,tasaArribos),
 								estadia(MT19937,tiempoEstadia,20),
 								camas(cantCamas, cantCamas),
@@ -55,7 +55,11 @@ void HospitalSimple::init() {
 
 void HospitalSimple::doInitialSchedules() {
 	// agendo el primer paciente
-	schedule(0.0, new Entity(), pacienteF);
+	double t1 = 0.0;
+	for(int t1= 0; t1 < runTime; t1+=arribos.sample()){
+		if(t1 > 0)
+			schedule(t1>0?t1:0, new Entity(), pacienteF);
+	}
 	schedule(0.0, new Entity(),tomarMedida);
 	schedule(0.0, new Entity(),timeSeries);		
 	if(!aviso_muerte_tardio) schedule(dis_muertes.sample(), new Entity(),muertePaciente);

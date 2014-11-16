@@ -17,8 +17,8 @@ int main () {
         Experiment e;
         std::cout << "Arranco ...\n";
         m.connectToExp(&e);
-        e.setSeed((unsigned long) 9123832);
-		e.run(runTime);
+        e.setSeed((unsigned long) 123132);
+		e.run(12000);
         std::cout << "Termine ...\n\n\n";
 		m.lCola.print(10);
 		std::cout << '\n';
