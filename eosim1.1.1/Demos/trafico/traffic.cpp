@@ -39,6 +39,8 @@ Traffic::Traffic(double p_media_vehiculos, double p_media_izq, double p_media_de
 	lCola_ci("Largo Cola CI",*this)
 {
 	semaforo = new Semaforo();
+	tiempo_llegada = 0;
+	cant_vehiculos = 0;
 }
 
 	Traffic::~Traffic() {}

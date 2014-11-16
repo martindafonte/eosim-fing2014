@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const unsigned int repeticiones = 12;
+const unsigned int repeticiones = 13;
 
 int main() {
     std::string s;
@@ -34,7 +34,7 @@ int main() {
 		eosim::core::Experiment e;
 		//std::cout << "Arranco ...\n";
 		t.connectToExp(&e);
-		e.setSeed((unsigned long) i * 129);
+		e.setSeed((unsigned long) i * 12391293);
 		e.run(500*50);
         //std::cout << "Termine ...\n\n\n";
 		lCola_cc[i]=t.lCola_cc.getMean();
@@ -67,11 +67,12 @@ int main() {
 	cout<<"Valores repeticiones"<<endl;
 	cout<<"Largo cola(mean)		Tiempo de espera(mean)"<<endl;
 	for(int i=0;i<repeticiones;i++){
-		cout<<"cc "<<lCola_cc[i]<<"	"<<tespera_cc[i]<<endl;		
-		cout<<"ci "<<lCola_ci[i]<<"	"<<tespera_ci[i]<<endl;		
-		cout<<"cd "<<lCola_cd[i]<<"	"<<tespera_cd[i]<<endl;		
-		cout<<"dd "<<lCola_dd[i]<<"	"<<tespera_dd[i]<<endl;		
-		cout<<"di "<<lCola_di[i]<<"	"<<tespera_di[i]<<endl<<endl;
+		//cout<<"cc "<<lCola_cc[i]<<"	"<<tespera_cc[i]<<endl;		
+	///	cout<<"ci "<<lCola_ci[i]<<"	"<<tespera_ci[i]<<endl;		
+	//	cout<<"cd "<<lCola_cd[i]<<"	"<<tespera_cd[i]<<endl;		
+	//	cout<<"dd "<<lCola_dd[i]<<"	"<<tespera_dd[i]<<endl;		
+	//	cout<<"di "<<lCola_di[i]<<"	"<<tespera_di[i]<<endl<<endl;
+		//if(i==12) cout<<endl<<endl<<endl<<endl<<endl;
 		cout<<"promedio largo colas(X): "<<(lCola_cc[i]+lCola_ci[i]+lCola_cd[i]+lCola_dd[i]+lCola_di[i])/5 <<endl;
 		cout<<"promedio tiempo llegadas(Y): "<<prom_llegada[i] <<endl<<endl<<endl;		
 	}
