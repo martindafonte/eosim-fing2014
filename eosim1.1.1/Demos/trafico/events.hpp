@@ -78,6 +78,20 @@ public:
 	void eventRoutine();
 };
 
+class TomarTS: public eosim::core::BEvent {
+public:
+	TomarTS(eosim::core::Model& model);
+	~TomarTS();
+	void eventRoutine(eosim::core::Entity* who);
+};
+
+class Reset: public eosim::core::BEvent{
+public:
+	Reset(eosim::core::Model& model);
+	~Reset();
+	void eventRoutine(eosim::core::Entity* who);
+};
+
 #endif
 
 

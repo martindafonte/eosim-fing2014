@@ -173,3 +173,35 @@ void Ini_cruzar_cd::eventRoutine(){
 		t.schedule(2,e,fin_cruzar);
 	}
 };
+
+
+	TomarTS::TomarTS(eosim::core::Model& model):BEvent("TomarTS",model){};
+	TomarTS::~TomarTS(){};
+	void TomarTS::eventRoutine(eosim::core::Entity* who){
+		Traffic& t = dynamic_cast<Traffic&>(owner);
+		t.ts_colacc.log(t.cruza_CC.size());
+		t.ts_colaci.log(t.cruza_CI.size());
+		t.ts_colacd.log(t.cruza_CD.size());
+		t.ts_coladd.log(t.cruza_DD.size());
+		t.ts_coladi.log(t.cruza_DI.size());
+		t.stream_archivo <<t.getSimTime()<<"\t"<<t.lCola_di.getMean()<<"\t"<<t.lCola_ci.getMean()<<"\t"<<t.lCola_cc.getMean()<<"\t"<<t.lCola_cd.getMean()<<"\t"<<t.lCola_dd.getMean()<<std::endl;
+		t.schedule(ts_time,who,"TomarTS");
+	};
+
+	Reset::Reset(eosim::core::Model& model): BEvent("Reset", model) {};
+
+	Reset::~Reset() {};
+
+	void Reset::eventRoutine(eosim::core::Entity* who) {
+		Traffic& m = dynamic_cast<Traffic&>(owner);
+		m.lCola_cc.reset();
+		m.lCola_cd.reset();
+		m.lCola_ci.reset();
+		m.lCola_dd.reset();
+		m.lCola_di.reset();
+		m.tEspera_di.reset();
+		m.tEspera_dd.reset();
+		m.tEspera_cc.reset();
+		m.tEspera_cd.reset();
+		m.tEspera_ci.reset();
+};

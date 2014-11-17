@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const unsigned int repeticiones = 13;
+const unsigned int repeticiones = 1;
 
 int main() {
     std::string s;
@@ -29,19 +29,23 @@ int main() {
 	double tespera_dd [repeticiones];
 	double tespera_di [repeticiones];
 
+	//double s_tiempo_verde[3] ={29,39,19};
+	//double s_tiempo_roja[3] = {21,11,31};
+	//double s_media_vehiculos [2] = {media_vehiculos, media_vehiculos*1.05*1.05};
+
     for (int i = 0; i < repeticiones; i++) {
-		Traffic t(media_vehiculos, media_izq, media_der, media_central, tiempo_verde, tiempo_roja);
+		Traffic t(media_vehiculos, media_izq, media_der, media_central,tiempo_verde /*s_tiempo_verde[i]*/, tiempo_roja /* s_tiempo_roja[i]*/);
 		eosim::core::Experiment e;
-		//std::cout << "Arranco ...\n";
+		std::cout << "Arranco ...\n";
 		t.connectToExp(&e);
-		e.setSeed((unsigned long) i * 12391293);
-		e.run(500*50);
-        //std::cout << "Termine ...\n\n\n";
+		e.setSeed((unsigned long) i * 13289);
+		e.run(runtime);
+        std::cout << "Termine ...\n\n\n";
 		lCola_cc[i]=t.lCola_cc.getMean();
-		lCola_ci[i]=t.lCola_cc.getMean();
-		lCola_cd[i]=t.lCola_cc.getMean();
-		lCola_dd[i]=t.lCola_cc.getMean();
-		lCola_di[i]=t.lCola_cc.getMean();
+		lCola_ci[i]=t.lCola_ci.getMean();
+		lCola_cd[i]=t.lCola_cd.getMean();
+		lCola_dd[i]=t.lCola_dd.getMean();
+		lCola_di[i]=t.lCola_di.getMean();
 		
 		tespera_cc[i] = t.tEspera_cc.getMean();
 		tespera_ci[i] = t.tEspera_ci.getMean();
@@ -49,32 +53,40 @@ int main() {
 		tespera_dd[i] = t.tEspera_dd.getMean();
 		tespera_di[i] = t.tEspera_di.getMean();
 
+		t.ts_colacc.print(ts_celdas,"salida_cc.sal");
+		t.ts_colaci.print(ts_celdas,"salida_ci.sal");
+		t.ts_colacd.print(ts_celdas,"salida_cd.sal");
+		t.ts_coladd.print(ts_celdas,"salida_dd.sal");
+		t.ts_coladi.print(ts_celdas,"salida_di.sal");
 		prom_llegada[i] = t.tiempo_llegada / t.cant_vehiculos;
-		//int celdasCola=5;
-		//int celdasTiempo = 8;
-		//t.lCola_cc.print(celdasCola);
-		//t.lCola_ci.print(celdasCola);
-		//t.lCola_cd.print(celdasCola);
-		//t.lCola_dd.print(celdasCola);
-		//t.lCola_di.print(celdasCola);
-		//t.tEspera_cc.print(celdasTiempo);
-		//t.tEspera_ci.print(celdasTiempo);
-		//t.tEspera_cd.print(celdasTiempo);
-		//t.tEspera_dd.print(celdasTiempo);
-		//t.tEspera_di.print(celdasTiempo);
+		int celdasCola=5;
+		int celdasTiempo = 8;
+		t.lCola_cc.print(celdasCola);
+		t.lCola_ci.print(celdasCola);
+		t.lCola_cd.print(celdasCola);
+		t.lCola_dd.print(celdasCola);
+		t.lCola_di.print(celdasCola);
+		t.tEspera_cc.print(celdasTiempo);
+		t.tEspera_ci.print(celdasTiempo);
+		t.tEspera_cd.print(celdasTiempo);
+		t.tEspera_dd.print(celdasTiempo);
+		t.tEspera_di.print(celdasTiempo);
         //std::cin >> s;
 	}
-	cout<<"Valores repeticiones"<<endl;
-	cout<<"Largo cola(mean)		Tiempo de espera(mean)"<<endl;
+	//cout<<"Valores repeticiones"<<endl;
+	cout<<"\tLargo cola(mean)\t\tTiempo de espera(mean)"<<endl;
 	for(int i=0;i<repeticiones;i++){
-		//cout<<"cc "<<lCola_cc[i]<<"	"<<tespera_cc[i]<<endl;		
-	///	cout<<"ci "<<lCola_ci[i]<<"	"<<tespera_ci[i]<<endl;		
-	//	cout<<"cd "<<lCola_cd[i]<<"	"<<tespera_cd[i]<<endl;		
-	//	cout<<"dd "<<lCola_dd[i]<<"	"<<tespera_dd[i]<<endl;		
-	//	cout<<"di "<<lCola_di[i]<<"	"<<tespera_di[i]<<endl<<endl;
-		//if(i==12) cout<<endl<<endl<<endl<<endl<<endl;
-		cout<<"promedio largo colas(X): "<<(lCola_cc[i]+lCola_ci[i]+lCola_cd[i]+lCola_dd[i]+lCola_di[i])/5 <<endl;
-		cout<<"promedio tiempo llegadas(Y): "<<prom_llegada[i] <<endl<<endl<<endl;		
+		/*cout<<"Valor verde "<<s_tiempo_verde[i]<<" valor tiempo roja "<< s_tiempo_roja[i]<<endl;*/
+		//cout<< "Media vehículos "<< s_media_vehiculos[i]<<endl;
+		cout<<"cc\t"<<lCola_cc[i]<<"\t\t"<<tespera_cc[i]<<endl;		
+		cout<<"ci\t"<<lCola_ci[i]<<"\t\t"<<tespera_ci[i]<<endl;		
+		cout<<"cd\t"<<lCola_cd[i]<<"\t\t"<<tespera_cd[i]<<endl;		
+		cout<<"dd\t"<<lCola_dd[i]<<"\t\t"<<tespera_dd[i]<<endl;		
+		cout<<"di\t"<<lCola_di[i]<<"\t\t"<<tespera_di[i]<<endl<<endl;
+		double var_xn = (lCola_cc[i]+lCola_ci[i]+lCola_cd[i]+lCola_dd[i]+lCola_di[i])/5 ;
+		cout<<"promedio del promedio de largo colas(X): "<<var_xn<<endl;
+		cout<<"promedio del tiempo llegadas de vehiculos (Y): "<<prom_llegada[i] <<endl;	
+		cout<<"Valor Xc: "<<var_xn - (var_a*(prom_llegada[i]-var_v))<<endl<<endl<<endl;
 	}
 	string l;
 	cin>>l;

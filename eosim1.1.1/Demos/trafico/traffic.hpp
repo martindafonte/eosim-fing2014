@@ -13,6 +13,9 @@
 #include <eosim/dist/negexpdist.hpp>
 #include <eosim/statics/observation.hpp>
 #include <eosim/statics/timeweighted.hpp>
+#include <eosim/statics/timeseries.hpp>
+#include <iostream>
+#include <fstream>
 
 /*
 Este es el modelo de simulacion del ejemplo de la fabrica presentado en el libro
@@ -29,6 +32,8 @@ private:
 	Fin_cruzar eFinCruzar;
 	Luz_verde eLuzVerde;
 	Luz_roja eLuzRoja;
+	TomarTS eTs;
+	Reset eRs;
 	//C events
 	Ini_cruzar_di eIniCruzarDI;
 	Ini_cruzar_dd eIniCruzarDD;
@@ -36,6 +41,7 @@ private:
 	Ini_cruzar_cc eIniCruzarCC;
 	Ini_cruzar_cd eIniCruzarCD;
 public:
+	std::ofstream stream_archivo;
     // Doblar a la izquierda
     eosim::core::Renewable r_doblar_izq;
 	// Doblar a la derecha
@@ -68,6 +74,12 @@ public:
 	eosim::statics::TimeWeighted lCola_cc;
 	eosim::statics::TimeWeighted lCola_ci;
 	eosim::statics::TimeWeighted lCola_cd;
+
+	eosim::statics::TimeSeries ts_coladd;
+	eosim::statics::TimeSeries ts_coladi;
+	eosim::statics::TimeSeries ts_colacd;
+	eosim::statics::TimeSeries ts_colaci;
+	eosim::statics::TimeSeries ts_colacc;
 
 	double media_izq;
 	double media_der;
